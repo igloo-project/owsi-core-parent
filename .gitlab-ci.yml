@@ -57,11 +57,11 @@ maven-deploy:
   script:
     - "mvn deploy -DskipTests -DperformRelease -Ddistribution=igloo-release"
   only:
-    - /^master$/
-    - /^dev$/
-    - /^ft-.*-deploy$/
-    - /^rl-.*$/
-    - /^hf-.*$/
+    - /^v1-master$/
+    - /^v1-dev$/
+    - /^v1-ft-.*-deploy$/
+    - /^v1-rl-.*$/
+    - /^v1-hf-.*$/
   except:
     variables:
       - $CHECK_DEPENDENCIES
