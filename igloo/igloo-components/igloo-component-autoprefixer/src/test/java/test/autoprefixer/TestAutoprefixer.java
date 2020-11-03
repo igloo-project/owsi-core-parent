@@ -6,7 +6,6 @@ import org.apache.commons.io.IOUtils;
 import org.assertj.core.api.Assertions;
 import org.iglooproject.autoprefixer.Autoprefixer;
 import org.iglooproject.autoprefixer.AutoprefixerException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +45,7 @@ public class TestAutoprefixer {
 	}
 
 	@Test
-	@Ignore
+//	@Ignore
 	public void bootstrap() throws AutoprefixerException, IOException {
 		String css = IOUtils.toString(getClass().getResourceAsStream("/css/bootstrap.css"));
 		
@@ -57,7 +56,22 @@ public class TestAutoprefixer {
 		
 		stopWatch.stop();
 		
-		LOGGER.debug("Autoprefixer process time: {}s", stopWatch.getTotalTimeSeconds());
+		LOGGER.debug("Autoprefixer (rhino) process time: {}s", stopWatch.getTotalTimeSeconds());
+	}
+
+	@Test
+//	@Ignore
+	public void graalBootstrap() throws AutoprefixerException, IOException {
+		String css = IOUtils.toString(getClass().getResourceAsStream("/css/bootstrap.css"));
+		
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
+		
+		Autoprefixer.graal().process(css);
+		
+		stopWatch.stop();
+		
+		LOGGER.debug("Autoprefixer (graal) process time: {}s", stopWatch.getTotalTimeSeconds());
 	}
 
 }
