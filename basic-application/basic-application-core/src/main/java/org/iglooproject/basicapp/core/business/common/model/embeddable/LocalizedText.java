@@ -24,27 +24,21 @@ public class LocalizedText extends AbstractLocalizedText {
 	private static final long serialVersionUID = -1225434649910707113L;
 
 	public static final String FR = "fr";
-	public static final String FR_AUTOCOMPLETE = "frAutocomplete";
 	public static final String FR_SORT = "frSort";
 
 	public static final String EN = "en";
-	public static final String EN_AUTOCOMPLETE = "enAutocomplete";
 	public static final String EN_SORT = "enSort";
 
 	@Column
-	@Field(name = FR, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT_STEMMING))
+	@Field(name = FR, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT))
 	@Field(name = FR_SORT, normalizer = @Normalizer(definition = HibernateSearchNormalizer.TEXT))
-	@Field(name = FR_AUTOCOMPLETE, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT))
 	@SortableField(forField = FR_SORT)
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private String fr;
 
 	@Column
-	@Field(name = EN, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT_STEMMING))
+	@Field(name = EN, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT))
 	@Field(name = EN_SORT, normalizer = @Normalizer(definition = HibernateSearchNormalizer.TEXT))
-	@Field(name = EN_AUTOCOMPLETE, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT))
 	@SortableField(forField = EN_SORT)
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private String en;
 
 	public LocalizedText() {

@@ -85,7 +85,6 @@ public abstract class AbstractHistoryLog<
 	@Temporal(TemporalType.TIMESTAMP)
 	@Field(name = DATE)
 	@SortableField(forField = DATE)
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private Date date;
 
 	@Basic(optional = false)
@@ -95,7 +94,6 @@ public abstract class AbstractHistoryLog<
 	
 	@Embedded
 	@IndexedEmbedded(prefix = SUBJECT_PREFIX, includePaths = {HistoryValue.REFERENCE})
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private HistoryValue subject;
 	
 	@Embedded
@@ -104,22 +102,18 @@ public abstract class AbstractHistoryLog<
 	
 	@Embedded
 	@IndexedEmbedded(prefix = OBJECT1_PREFIX, includePaths = {HistoryValue.REFERENCE})
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private HistoryValue object1 = new HistoryValue();
 
 	@Embedded
 	@IndexedEmbedded(prefix = OBJECT2_PREFIX, includePaths = {HistoryValue.REFERENCE})
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private HistoryValue object2 = new HistoryValue();
 
 	@Embedded
 	@IndexedEmbedded(prefix = OBJECT3_PREFIX, includePaths = {HistoryValue.REFERENCE})
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private HistoryValue object3 = new HistoryValue();
 
 	@Embedded
 	@IndexedEmbedded(prefix = OBJECT4_PREFIX, includePaths = {HistoryValue.REFERENCE})
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private HistoryValue object4 = new HistoryValue();
 	
 	@Basic

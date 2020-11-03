@@ -35,24 +35,22 @@ public abstract class GenericReferenceData<E extends GenericReferenceData<?, ?>,
 
 	@Override
 	public abstract T getLabel();
-	
+
 	@Basic(optional = false)
 	@Field(name = POSITION, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.KEYWORD))
 	@SortableField(forField = POSITION)
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private Integer position = 0;
 
 	@Field(name = ENABLED)
 	@Basic(optional = false)
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private boolean enabled = true;
-	
+
 	@Basic(optional = false)
 	private boolean editable = true;
-	
+
 	@Basic(optional = false)
 	private boolean disableable = true;
-	
+
 	@Basic(optional = false)
 	private boolean deleteable = false;
 

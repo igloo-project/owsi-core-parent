@@ -22,9 +22,9 @@ public class ReferenceData<E extends ReferenceData<?>> extends GenericReferenceD
 
 	public static final String LABEL = "label";
 	public static final String LABEL_PREFIX = LABEL + ".";
-	public static final String LABEL_FR_AUTOCOMPLETE = LABEL_PREFIX + LocalizedText.FR_AUTOCOMPLETE;
+	public static final String LABEL_FR = LABEL_PREFIX + LocalizedText.FR;
 	public static final String LABEL_FR_SORT = LABEL_PREFIX + LocalizedText.FR_SORT;
-	public static final String LABEL_EN_AUTOCOMPLETE = LABEL_PREFIX + LocalizedText.EN_AUTOCOMPLETE;
+	public static final String LABEL_EN = LABEL_PREFIX + LocalizedText.EN;
 	public static final String LABEL_EN_SORT = LABEL_PREFIX + LocalizedText.EN_SORT;
 
 	public static final String CODE = "code";
@@ -33,7 +33,6 @@ public class ReferenceData<E extends ReferenceData<?>> extends GenericReferenceD
 	@Embedded
 	@IndexedEmbedded(prefix = LABEL_PREFIX)
 	@QueryInit("*")
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private LocalizedText label;
 
 	public ReferenceData() {

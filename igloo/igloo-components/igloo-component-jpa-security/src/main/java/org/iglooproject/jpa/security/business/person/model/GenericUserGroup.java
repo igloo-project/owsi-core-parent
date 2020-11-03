@@ -55,7 +55,6 @@ public abstract class GenericUserGroup<G extends GenericUserGroup<G, PERSON>, PE
 	@Field(name = NAME, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT))
 	@Field(name = NAME_SORT, normalizer = @Normalizer(definition = HibernateSearchNormalizer.TEXT))
 	@SortableField(forField = NAME_SORT)
-	@SuppressWarnings("squid:S1845") // attribute name differs only by case on purpose
 	private String name;
 
 	/**
