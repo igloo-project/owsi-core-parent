@@ -23,6 +23,7 @@ public class ReferenceData<E extends ReferenceData<?>> extends GenericReferenceD
 	public static final String LABEL = "label";
 	public static final String LABEL_PREFIX = LABEL + ".";
 	public static final String LABEL_FR = LABEL_PREFIX + LocalizedText.FR;
+	public static final String LABEL_FR_FULL = LABEL_PREFIX + LocalizedText.FR_FULL;
 	public static final String LABEL_FR_SORT = LABEL_PREFIX + LocalizedText.FR_SORT;
 	public static final String LABEL_EN = LABEL_PREFIX + LocalizedText.EN;
 	public static final String LABEL_EN_SORT = LABEL_PREFIX + LocalizedText.EN_SORT;

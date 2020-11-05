@@ -3,15 +3,14 @@ package org.iglooproject.jpa.more.business.generic.model.search;
 import java.util.List;
 
 import org.apache.lucene.search.SortField;
-
-import com.google.common.collect.ImmutableList;
-
 import org.iglooproject.jpa.business.generic.model.GenericEntity;
 import org.iglooproject.jpa.more.business.sort.ISort;
 import org.iglooproject.jpa.more.business.sort.SortUtils;
 
+import com.google.common.collect.ImmutableList;
+
 public enum GenericEntitySort implements ISort<SortField> {
-	
+
 	SCORE {
 		@Override
 		public List<SortField> getSortFields(SortOrder sortOrder) {
@@ -19,7 +18,7 @@ public enum GenericEntitySort implements ISort<SortField> {
 		}
 		@Override
 		public SortOrder getDefaultOrder() {
-			return SortOrder.ASC;
+			return SortOrder.DESC;
 		}
 	},
 	ID {
@@ -37,11 +36,5 @@ public enum GenericEntitySort implements ISort<SortField> {
 			return SortOrder.DESC;
 		}
 	};
-	
-	@Override
-	public abstract List<SortField> getSortFields(SortOrder sortOrder);
-	
-	@Override
-	public abstract SortOrder getDefaultOrder();
 
 }

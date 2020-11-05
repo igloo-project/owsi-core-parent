@@ -14,6 +14,7 @@ import org.hibernate.search.query.dsl.sort.SortAdditionalSortFieldContext;
 import org.hibernate.search.query.dsl.sort.SortContext;
 import org.hibernate.search.query.dsl.sort.SortFieldContext;
 import org.hibernate.search.query.dsl.sort.SortOrder;
+import org.hibernate.search.query.dsl.sort.SortScoreContext;
 import org.hibernate.search.query.dsl.sort.SortTermination;
 
 public final class SortFieldUtil {
@@ -78,6 +79,10 @@ public final class SortFieldUtil {
 	private static SortAdditionalSortFieldContext order(SortAdditionalSortFieldContext fieldContext, SortField sortField) {
 		if (!(fieldContext instanceof SortOrder)) {
 			throw new IllegalStateException("FieldContext must be a SortOrder.");
+		}
+		
+		if (fieldContext instanceof SortScoreContext) {
+			return sortField.getReverse() ? ((SortScoreContext) fieldContext).asc() : fieldContext;
 		}
 		
 		return !sortField.getReverse() ? ((SortOrder<SortAdditionalSortFieldContext>) fieldContext).asc() : ((SortOrder<SortAdditionalSortFieldContext>) fieldContext).desc();

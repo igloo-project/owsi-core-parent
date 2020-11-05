@@ -36,10 +36,4 @@ public enum SortIconStyle implements ISortIconStyle {
 		}
 	};
 
-	@Override
-	public abstract String getAscIconCssClasses();
-
-	@Override
-	public abstract String getDescIconCssClasses();
-
 }

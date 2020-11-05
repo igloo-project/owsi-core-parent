@@ -3,7 +3,9 @@ package org.iglooproject.basicapp.web.application.navigation.page;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.iglooproject.basicapp.core.business.referencedata.model.City;
 import org.iglooproject.basicapp.web.application.administration.page.AdministrationBasicUserListPage;
+import org.iglooproject.basicapp.web.application.common.form.ReferenceDataAjaxDropDownSingleChoice;
 import org.iglooproject.basicapp.web.application.common.template.MainTemplate;
 import org.iglooproject.basicapp.web.application.profile.page.ProfilePage;
 import org.iglooproject.basicapp.web.application.referencedata.page.ReferenceDataPage;
@@ -12,6 +14,7 @@ import org.iglooproject.wicket.more.condition.Condition;
 import org.iglooproject.wicket.more.link.descriptor.IPageLinkDescriptor;
 import org.iglooproject.wicket.more.link.descriptor.builder.LinkDescriptorBuilder;
 import org.iglooproject.wicket.more.markup.html.template.model.BreadCrumbElement;
+import org.iglooproject.wicket.more.model.GenericEntityModel;
 
 public class HomePage extends MainTemplate {
 
@@ -31,6 +34,10 @@ public class HomePage extends MainTemplate {
 		));
 		
 		add(new CoreLabel("pageTitle", new ResourceModel("home.pageTitle")));
+		
+		add(
+			new ReferenceDataAjaxDropDownSingleChoice<>("city", new GenericEntityModel<>(), City.class)
+		);
 		
 		add(
 			AdministrationBasicUserListPage.linkDescriptor()

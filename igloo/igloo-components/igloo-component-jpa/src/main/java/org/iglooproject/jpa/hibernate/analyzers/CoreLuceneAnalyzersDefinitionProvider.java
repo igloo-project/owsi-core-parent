@@ -24,8 +24,8 @@ public class CoreLuceneAnalyzersDefinitionProvider implements LuceneAnalysisDefi
 		builder.analyzer(prefix + HibernateSearchAnalyzer.KEYWORD).tokenizer(KeywordTokenizerFactory.class);
 		
 		builder.analyzer(prefix + HibernateSearchAnalyzer.KEYWORD_CLEAN).tokenizer(KeywordTokenizerFactory.class)
-			.tokenFilter(ASCIIFoldingFilterFactory.class)
-			.tokenFilter(LowerCaseFilterFactory.class);
+				.tokenFilter(ASCIIFoldingFilterFactory.class)
+				.tokenFilter(LowerCaseFilterFactory.class);
 		
 		builder.analyzer(prefix + HibernateSearchAnalyzer.TEXT).tokenizer(WhitespaceTokenizerFactory.class)
 				.tokenFilter(ASCIIFoldingFilterFactory.class)

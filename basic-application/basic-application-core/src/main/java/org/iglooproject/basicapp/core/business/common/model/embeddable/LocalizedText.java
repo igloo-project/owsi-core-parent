@@ -24,6 +24,7 @@ public class LocalizedText extends AbstractLocalizedText {
 	private static final long serialVersionUID = -1225434649910707113L;
 
 	public static final String FR = "fr";
+	public static final String FR_FULL = "frFull";
 	public static final String FR_SORT = "frSort";
 
 	public static final String EN = "en";
@@ -31,6 +32,7 @@ public class LocalizedText extends AbstractLocalizedText {
 
 	@Column
 	@Field(name = FR, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.TEXT))
+	@Field(name = FR_FULL, analyzer = @Analyzer(definition = HibernateSearchAnalyzer.KEYWORD_CLEAN))
 	@Field(name = FR_SORT, normalizer = @Normalizer(definition = HibernateSearchNormalizer.TEXT))
 	@SortableField(forField = FR_SORT)
 	private String fr;

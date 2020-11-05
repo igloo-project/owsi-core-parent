@@ -41,7 +41,7 @@ public class TableSortLink<T extends ISort<?>> extends AjaxLink<Void> {
 	
 	private ISortIconStyle sortIconCssStyle = SortIconStyle.DEFAULT;
 	
-	public static enum CycleMode {
+	public enum CycleMode {
 		NONE_DEFAULT {
 			@Override
 			protected SortOrder getNext(ISort<?> sort, SortOrder currentOrder) {

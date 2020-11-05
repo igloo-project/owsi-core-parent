@@ -57,6 +57,7 @@ public abstract class BasicReferenceDataDataProvider<T extends ReferenceData<? s
 		return new CompositeSortModel<>(
 			CompositingStrategy.LAST_ONLY,
 			ImmutableMap.of(
+				ReferenceDataSort.SCORE, ReferenceDataSort.SCORE.getDefaultOrder(),
 				ReferenceDataSort.POSITION, ReferenceDataSort.POSITION.getDefaultOrder(),
 				ReferenceDataSort.LABEL_FR, ReferenceDataSort.LABEL_FR.getDefaultOrder(),
 				ReferenceDataSort.LABEL_EN, ReferenceDataSort.LABEL_EN.getDefaultOrder()
