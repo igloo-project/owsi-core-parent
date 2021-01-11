@@ -6,6 +6,7 @@ import org.iglooproject.basicapp.core.business.history.model.atomic.HistoryEvent
 import org.iglooproject.basicapp.core.business.history.model.bean.HistoryLogAdditionalInformationBean;
 import org.iglooproject.basicapp.core.business.history.service.IHistoryLogService;
 import org.iglooproject.basicapp.core.business.user.dao.IUserDao;
+import org.iglooproject.basicapp.core.business.user.difference.service.IUserDifferenceService;
 import org.iglooproject.basicapp.core.business.user.model.User;
 import org.iglooproject.basicapp.core.security.service.IBasicApplicationAuthenticationService;
 import org.iglooproject.jpa.exception.SecurityServiceException;
@@ -33,8 +34,8 @@ public class UserServiceImpl extends GenericSimpleUserServiceImpl<User> implemen
 	@Autowired
 	private IPropertyService propertyService;
 
-//	@Autowired
-//	private IUserDifferenceService userDifferenceService;
+	@Autowired
+	private IUserDifferenceService userDifferenceService;
 
 	@Autowired
 	public UserServiceImpl(IUserDao userDao) {
@@ -59,9 +60,12 @@ public class UserServiceImpl extends GenericSimpleUserServiceImpl<User> implemen
 		
 		super.updateEntity(user);
 		
-//		historyLogService.logWithDifferences(HistoryEventType.UPDATE, user, HistoryLogObjectsBean.of(user),
-//			userDifferenceService.getMinimalDifferenceGenerator(),
-//			userDifferenceService);
+		historyLogService.logWithDifferences(
+			HistoryEventType.UPDATE,
+			user,
+			HistoryLogAdditionalInformationBean.empty(),
+			userDifferenceService
+		);
 	}
 
 	@Override

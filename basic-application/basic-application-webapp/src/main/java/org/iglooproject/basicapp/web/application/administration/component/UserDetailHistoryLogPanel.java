@@ -9,7 +9,9 @@ import org.iglooproject.basicapp.core.business.history.model.atomic.HistoryEvent
 import org.iglooproject.basicapp.core.business.user.model.User;
 import org.iglooproject.basicapp.core.util.binding.Bindings;
 import org.iglooproject.basicapp.web.application.history.column.HistoryLogDetailColumn;
+import org.iglooproject.basicapp.web.application.history.component.factory.CustomizableHistoryComponentFactory;
 import org.iglooproject.basicapp.web.application.history.model.HistoryLogDataProvider;
+import org.iglooproject.commons.util.fieldpath.FieldPath;
 import org.iglooproject.jpa.more.business.history.search.HistoryLogSort;
 import org.iglooproject.spring.property.service.IPropertyService;
 import org.iglooproject.wicket.markup.html.panel.GenericPanel;
@@ -40,7 +42,12 @@ public class UserDetailHistoryLogPanel extends GenericPanel<User> {
 					.withClass("date date-lg")
 				.addLabelColumn(new ResourceModel("business.history.subject"), Bindings.historyLog().subject())
 					.withClass("text text-lg")
-				.addColumn(new HistoryLogDetailColumn())
+				.addColumn(
+					new HistoryLogDetailColumn(
+						new CustomizableHistoryComponentFactory()
+							.compositeBlockForPath(FieldPath.fromString(".value0"))
+					)
+				)
 					.withClass("text text-xl")
 				.bootstrapCard()
 					.title("administration.user.detail.audits")

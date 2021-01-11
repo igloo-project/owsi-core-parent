@@ -15,6 +15,9 @@ import org.iglooproject.basicapp.core.business.user.model.atomic.UserPasswordRec
 import org.iglooproject.basicapp.core.business.user.model.atomic.UserPasswordRecoveryRequestType;
 import org.iglooproject.commons.util.CloneUtils;
 
+import de.danielbechler.diff.inclusion.Inclusion;
+import de.danielbechler.diff.introspection.ObjectDiffProperty;
+
 @Embeddable
 @Bindable
 public class UserPasswordRecoveryRequest implements Serializable {
@@ -35,6 +38,7 @@ public class UserPasswordRecoveryRequest implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private UserPasswordRecoveryRequestInitiator initiator;
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public String getToken() {
 		return token;
 	}

@@ -15,6 +15,9 @@ import org.iglooproject.basicapp.core.business.user.model.embeddable.UserPasswor
 import org.iglooproject.jpa.security.business.person.model.GenericSimpleUser;
 import org.iglooproject.spring.util.StringUtils;
 
+import de.danielbechler.diff.inclusion.Inclusion;
+import de.danielbechler.diff.introspection.ObjectDiffProperty;
+
 @Indexed
 @Bindable
 @Cacheable
@@ -40,6 +43,7 @@ public class User extends GenericSimpleUser<User, UserGroup> {
 		super();
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public UserPasswordInformation getPasswordInformation() {
 		if (passwordInformation == null) {
 			passwordInformation = new UserPasswordInformation();
@@ -54,6 +58,7 @@ public class User extends GenericSimpleUser<User, UserGroup> {
 		return passwordRecoveryRequest;
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public UserAnnouncementInformation getAnnouncementInformation() {
 		if (announcementInformation == null) {
 			announcementInformation = new UserAnnouncementInformation();

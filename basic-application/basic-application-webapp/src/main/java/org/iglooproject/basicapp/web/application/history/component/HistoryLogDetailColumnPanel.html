@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
 	<wicket:panel>
-		<span class="history-action" wicket:id="action" />
-		<wicket:container wicket:id="differences" />
+		<div class="history-log">
+			<div>
+				<span wicket:id="id" class="history-log-technical-info" />
+				<span wicket:id="eventType" class="history-log-event-type" />
+			</div>
+			<div wicket:id="comment" class="history-log-comment" />
+			<wicket:container wicket:id="differences" />
+		</div>
 	</wicket:panel>
 </html>

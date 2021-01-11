@@ -45,6 +45,9 @@ import com.google.common.collect.Sets;
 import com.querydsl.core.annotations.PropertyType;
 import com.querydsl.core.annotations.QueryType;
 
+import de.danielbechler.diff.inclusion.Inclusion;
+import de.danielbechler.diff.introspection.ObjectDiffProperty;
+
 @Indexed
 @MappedSuperclass
 @Bindable
@@ -137,7 +140,7 @@ public abstract class GenericUser<U extends GenericUser<U, G>, G extends Generic
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public abstract String getFullName();
 
 	@Override
@@ -152,11 +155,11 @@ public abstract class GenericUser<U extends GenericUser<U, G>, G extends Generic
 	public void addAuthority(Authority authority) {
 		this.authorities.add(authority);
 	}
-	
+
 	public void removeAuthority(Authority authority) {
 		this.authorities.remove(authority);
 	}
-	
+
 	@Override
 	public Set<G> getGroups() {
 		return Collections.unmodifiableSet(groups);
@@ -170,13 +173,14 @@ public abstract class GenericUser<U extends GenericUser<U, G>, G extends Generic
 	public void addGroup(G group) {
 		this.groups.add(group);
 	}
-	
+
 	@Override
 	public void removeGroup(G personGroup) {
 		this.groups.remove(personGroup);
 	}
-	
+
 	@Override
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public String getPasswordHash() {
 		return passwordHash;
 	}
@@ -185,6 +189,7 @@ public abstract class GenericUser<U extends GenericUser<U, G>, G extends Generic
 		this.passwordHash = passwordHash;
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public boolean hasPasswordHash() {
 		return !Objects.equals(getPasswordHash(), EMPTY_PASSWORD_HASH);
 	}
@@ -198,22 +203,25 @@ public abstract class GenericUser<U extends GenericUser<U, G>, G extends Generic
 		return active;
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
+	public Date getLastLoginDate() {
+		return CloneUtils.clone(lastLoginDate);
+	}
+
 	public void setLastLoginDate(Date lastLoginDate) {
 		this.lastLoginDate = CloneUtils.clone(lastLoginDate);
 	}
 
-	public Date getLastLoginDate() {
-		return CloneUtils.clone(lastLoginDate);
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
+	public Date getCreationDate() {
+		return CloneUtils.clone(creationDate);
 	}
-	
+
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = CloneUtils.clone(creationDate);
 	}
 
-	public Date getCreationDate() {
-		return CloneUtils.clone(creationDate);
-	}
-	
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public Date getLastUpdateDate() {
 		return CloneUtils.clone(lastUpdateDate);
 	}
@@ -238,9 +246,10 @@ public abstract class GenericUser<U extends GenericUser<U, G>, G extends Generic
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
-	
+
 	@Override
 	@QueryType(PropertyType.NONE)
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public Set<? extends Permission> getPermissions() {
 		return Sets.newHashSetWithExpectedSize(0);
 	}

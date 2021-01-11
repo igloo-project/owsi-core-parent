@@ -12,3 +12,35 @@
 		margin-bottom: 1rem;
 	}
 }
+
+.history-log {
+	.history-log-event-type {
+		font-weight: bold;
+	}
+	
+	.history-log-technical-info {
+		font-size: .75rem;
+		font-style: italic;
+		color: $gray-600;
+	}
+	
+	ul.history-difference-list {
+		list-style-type: none;
+		margin: 0 0 0 1rem;
+		padding: 0;
+		
+		li.history-difference-item {
+			.history-difference-path {
+				color: $gray-700;
+				font-weight: bold;
+				margin-right: .25rem;
+			}
+			
+			.history-difference-difference {
+				.history-difference-difference-separator {
+					color: $gray-600;
+				}
+			}
+		}
+	}
+}

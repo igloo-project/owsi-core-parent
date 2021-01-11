@@ -7,15 +7,15 @@ import org.iglooproject.basicapp.core.business.referencedata.model.CityBinding;
 import org.iglooproject.basicapp.core.business.referencedata.model.IReferenceDataBindingInterfaceBinding;
 import org.iglooproject.basicapp.core.business.user.model.UserBinding;
 import org.iglooproject.basicapp.core.business.user.model.UserGroupBinding;
+import org.iglooproject.jpa.security.business.authority.model.AuthorityBinding;
 
 public final class Bindings {
 
 	private static final UserBinding USER = new UserBinding();
-
 	private static final UserGroupBinding USER_GROUP = new UserGroupBinding();
+	private static final AuthorityBinding AUTHORITY = new AuthorityBinding();
 
 	private static final HistoryLogBinding HISTORY_LOG = new HistoryLogBinding();
-
 	private static final HistoryDifferenceBinding HISTORY_DIFFERENCE = new HistoryDifferenceBinding();
 
 	private static final IReferenceDataBindingInterfaceBinding REFERENCE_DATA = new IReferenceDataBindingInterfaceBinding();
@@ -29,6 +29,10 @@ public final class Bindings {
 
 	public static UserGroupBinding userGroup() {
 		return USER_GROUP;
+	}
+
+	public static AuthorityBinding authority() {
+		return AUTHORITY;
 	}
 
 	public static HistoryLogBinding historyLog() {

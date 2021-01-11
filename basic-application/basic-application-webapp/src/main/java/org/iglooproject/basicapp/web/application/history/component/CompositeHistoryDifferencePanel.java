@@ -60,8 +60,7 @@ public class CompositeHistoryDifferencePanel extends GenericPanel<HistoryDiffere
 		};
 	}
 
-	public CompositeHistoryDifferencePanel(String id, IModel<HistoryDifference> model, String cssClass,
-			IHistoryComponentFactory historyComponentFactory) {
+	public CompositeHistoryDifferencePanel(String id, IModel<HistoryDifference> model, String cssClass, IHistoryComponentFactory historyComponentFactory) {
 		super(id, model);
 		
 		IModel<HistoryDifferenceEventType> eventTypeModel = BindingModel.of(model, Bindings.historyDifference().eventType());
@@ -78,9 +77,8 @@ public class CompositeHistoryDifferencePanel extends GenericPanel<HistoryDiffere
 	}
 
 	private Component newHistoryDifferenceListPanel(String wicketId, String cssClass, IHistoryComponentFactory historyComponentFactory) {
-		return new HistoryDifferenceListPanel(
-			wicketId, BindingModel.of(getModel(), Bindings.historyDifference().differences()), historyComponentFactory
-		)
+		return new HistoryDifferenceListPanel(wicketId, BindingModel.of(getModel(), Bindings.historyDifference().differences()), historyComponentFactory)
 				.add(new ClassAttributeAppender(cssClass));
 	}
+
 }

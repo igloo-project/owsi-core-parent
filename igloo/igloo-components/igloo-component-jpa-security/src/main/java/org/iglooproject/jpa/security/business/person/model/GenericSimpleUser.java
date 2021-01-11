@@ -18,6 +18,9 @@ import org.iglooproject.spring.notification.model.INotificationRecipient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import de.danielbechler.diff.inclusion.Inclusion;
+import de.danielbechler.diff.introspection.ObjectDiffProperty;
+
 @MappedSuperclass
 @Bindable
 public abstract class GenericSimpleUser<U extends GenericSimpleUser<U, G>, G extends GenericUserGroup<G, U>>
@@ -115,6 +118,7 @@ public abstract class GenericSimpleUser<U extends GenericSimpleUser<U, G>, G ext
 		this.email = email;
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -123,6 +127,7 @@ public abstract class GenericSimpleUser<U extends GenericSimpleUser<U, G>, G ext
 		this.phoneNumber = phoneNumber;
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public void setGsmNumber(String gsmNumber) {
 		this.gsmNumber = gsmNumber;
 	}
@@ -131,6 +136,7 @@ public abstract class GenericSimpleUser<U extends GenericSimpleUser<U, G>, G ext
 		return gsmNumber;
 	}
 
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public String getFaxNumber() {
 		return faxNumber;
 	}
@@ -154,6 +160,7 @@ public abstract class GenericSimpleUser<U extends GenericSimpleUser<U, G>, G ext
 	@Override
 	@Transient
 	@JsonIgnore
+	@ObjectDiffProperty(inclusion = Inclusion.EXCLUDED)
 	public boolean isNotificationEnabled() {
 		// implémentation par défaut ; dépend de l'état de l'utilisateur
 		return isActive();
