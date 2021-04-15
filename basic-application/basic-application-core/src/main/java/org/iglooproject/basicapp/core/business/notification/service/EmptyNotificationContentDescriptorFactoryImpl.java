@@ -17,6 +17,11 @@ public class EmptyNotificationContentDescriptorFactoryImpl implements IBasicAppl
 	}
 
 	@Override
+	public INotificationContentDescriptor exampleInlineCss(User user, Date date) {
+		return DEFAULT_DESCRIPTOR;
+	}
+
+	@Override
 	public INotificationContentDescriptor userPasswordRecoveryRequest(User user) {
 		return DEFAULT_DESCRIPTOR;
 	}

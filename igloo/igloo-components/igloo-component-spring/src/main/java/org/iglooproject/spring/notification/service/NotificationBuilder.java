@@ -667,6 +667,12 @@ public class NotificationBuilder implements INotificationBuilderInitState, INoti
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, isMultipartNeeded(textBody, htmlBody), encoding);
 		
+		System.out.println("==============================================================");
+		System.out.println("==============================================================");
+		System.out.println(htmlBody);
+		System.out.println("==============================================================");
+		System.out.println("==============================================================");
+		
 		if (from == null) {
 			from = getDefaultFrom();
 		}

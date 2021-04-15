@@ -1,0 +1,59 @@
+.card {
+	border-collapse: separate !important;
+	width: 100%;
+	overflow: hidden;
+	height: $card-height;
+	word-wrap: break-word;
+	border: $card-border-width solid $card-border-color;
+	@include border-radius($card-border-radius);
+
+	& > tbody > tr > td {
+		width: 100%;
+		background-color: $card-bg;
+		background-clip: border-box;
+	}
+}
+
+.card-body {
+	width: 100%;
+
+	& > tbody > tr > td {
+		width: 100%;
+		padding: $card-spacer-y $card-spacer-x;
+		color: $card-color;
+	}
+}
+
+.card-header {
+	width: 100%;
+	border-bottom: $card-border-width solid $card-border-color;
+
+	& > tbody > tr > td {
+		padding: $card-cap-padding-y $card-cap-padding-x;
+		color: $card-cap-color;
+		background-color: $card-cap-bg;
+	}
+
+	&:first-child {
+		@include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+	}
+
+	.card-header-title {
+		font-size: rem(1.5);
+	}
+}
+
+.card-footer {
+	width: 100%;
+	border-top: $card-border-width solid $card-border-color;
+
+	&:last-child {
+		@include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+	}
+
+	& > tbody > tr > td {
+		padding: $card-cap-padding-y $card-cap-padding-x;
+		color: $card-cap-color;
+		background-color: $card-cap-bg;
+	}
+}

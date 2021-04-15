@@ -13,11 +13,12 @@
 
 	<name>bootstrap-override</name>
 	<description>Bootstrap overrides for Igloo</description>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>bootstrap</artifactId>
 		</dependency>
 	</dependencies>
+
 </project>

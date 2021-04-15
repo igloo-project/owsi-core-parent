@@ -3,6 +3,7 @@ package org.iglooproject.wicket.more.notification.service;
 import java.util.Locale;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.util.lang.Args;
 import org.iglooproject.commons.util.context.IExecutionContext;
@@ -80,13 +81,13 @@ public abstract class AbstractNotificationContentDescriptorFactory extends Abstr
 		}
 		
 		private String renderHtmlBody(Locale locale) {
-			return AbstractNotificationContentDescriptorFactory.this.renderComponent(
-					() -> createComponent("htmlComponent"),
+			return AbstractNotificationContentDescriptorFactory.this.renderPage(
+					() -> createPage(),
 					locale
 			);
 		}
 		
-		public abstract Component createComponent(String wicketId);
+		public abstract Page createPage();
 		
 		@Override
 		public INotificationContentDescriptor withContext(INotificationRecipient recipient) {

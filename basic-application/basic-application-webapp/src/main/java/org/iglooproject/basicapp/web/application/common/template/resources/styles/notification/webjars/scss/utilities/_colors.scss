@@ -1,0 +1,16 @@
+@each $name, $color in map-merge(
+	$theme-colors,
+	(
+		"white": $white,
+		"body": $body-color,
+		"muted": $text-muted,
+		"reset": inherit,
+	)
+) {
+	.text-#{$name} {
+		&,
+		& > tbody > tr > td {
+			color: $color if($enable-important-utilities, !important, null);
+		}
+	}
+}

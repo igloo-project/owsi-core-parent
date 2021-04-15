@@ -100,6 +100,11 @@
 			<artifactId>bootstrap-override</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.iglooproject.webjars</groupId>
+			<artifactId>bootstrap-email</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.iglooproject.components</groupId>

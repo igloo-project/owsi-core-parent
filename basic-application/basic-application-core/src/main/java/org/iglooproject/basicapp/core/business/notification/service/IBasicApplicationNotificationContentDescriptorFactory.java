@@ -9,6 +9,8 @@ public interface IBasicApplicationNotificationContentDescriptorFactory {
 
 	INotificationContentDescriptor example(User user, Date date);
 
+	INotificationContentDescriptor exampleInlineCss(User user, Date date);
+
 	INotificationContentDescriptor userPasswordRecoveryRequest(User user);
 
 }

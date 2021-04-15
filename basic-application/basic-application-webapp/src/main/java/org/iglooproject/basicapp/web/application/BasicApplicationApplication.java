@@ -33,7 +33,8 @@ import org.iglooproject.basicapp.web.application.common.template.resources.Basic
 import org.iglooproject.basicapp.web.application.common.template.resources.styles.application.applicationaccess.ApplicationAccessScssResourceReference;
 import org.iglooproject.basicapp.web.application.common.template.resources.styles.console.console.ConsoleScssResourceReference;
 import org.iglooproject.basicapp.web.application.common.template.resources.styles.console.consoleaccess.ConsoleAccessScssResourceReference;
-import org.iglooproject.basicapp.web.application.common.template.resources.styles.notification.NotificationScssResourceReference;
+import org.iglooproject.basicapp.web.application.common.template.resources.styles.notification.email.NotificationEmailScssResourceReference;
+import org.iglooproject.basicapp.web.application.common.template.resources.styles.notification.head.NotificationHeadScssResourceReference;
 import org.iglooproject.basicapp.web.application.console.common.component.ConsoleAccessHeaderAdditionalContentPanel;
 import org.iglooproject.basicapp.web.application.console.common.component.ConsoleHeaderAdditionalContentPanel;
 import org.iglooproject.basicapp.web.application.console.common.component.ConsoleHeaderEnvironmentPanel;
@@ -103,7 +104,8 @@ public class BasicApplicationApplication extends CoreWicketAuthenticatedApplicat
 		if (!propertyService.isConfigurationTypeDevelopment()) {
 			preloadStyleSheets(
 				ConsoleScssResourceReference.get(),
-				NotificationScssResourceReference.get(),
+				NotificationEmailScssResourceReference.get(),
+				NotificationHeadScssResourceReference.get(),
 				ApplicationAccessScssResourceReference.get(),
 				org.iglooproject.basicapp.web.application.common.template.resources.styles.application.basic.StylesScssResourceReference.get(),
 				org.iglooproject.basicapp.web.application.common.template.resources.styles.application.advanced.StylesScssResourceReference.get()

@@ -2,15 +2,16 @@ package org.iglooproject.basicapp.web.application.notification.service;
 
 import java.util.Date;
 
-import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.iglooproject.basicapp.core.business.notification.service.IBasicApplicationNotificationContentDescriptorFactory;
 import org.iglooproject.basicapp.core.business.user.model.User;
 import org.iglooproject.basicapp.core.util.ResourceKeyGenerator;
 import org.iglooproject.basicapp.core.util.binding.Bindings;
-import org.iglooproject.basicapp.web.application.notification.component.ExampleHtmlNotificationPanel;
-import org.iglooproject.basicapp.web.application.notification.component.UserPasswordRecoveryRequestHtmlNotificationPanel;
+import org.iglooproject.basicapp.web.application.notification.page.ExampleHtmlNotificationPage;
+import org.iglooproject.basicapp.web.application.notification.page.ExampleInlineCssHtmlNotificationPage;
+import org.iglooproject.basicapp.web.application.notification.page.UserPasswordRecoveryRequestHtmlNotificationPage;
 import org.iglooproject.basicapp.web.application.security.password.page.SecurityPasswordCreationPage;
 import org.iglooproject.basicapp.web.application.security.password.page.SecurityPasswordResetPage;
 import org.iglooproject.spring.notification.model.INotificationContentDescriptor;
@@ -47,8 +48,26 @@ public class BasicApplicationNotificationContentDescriptorFactoryImpl
 				return ImmutableList.of(user.getFullName(), date);
 			}
 			@Override
-			public Component createComponent(String wicketId) {
-				return new ExampleHtmlNotificationPanel(wicketId, GenericEntityModel.of(user), Model.of(date));
+			public Page createPage() {
+				return new ExampleHtmlNotificationPage(GenericEntityModel.of(user), Model.of(date));
+			}
+		};
+	}
+
+	@Override
+	public INotificationContentDescriptor exampleInlineCss(final User user, final Date date) {
+		return new AbstractSimpleWicketNotificationDescriptor("notification.panel.example") {
+			@Override
+			public Object getSubjectParameter() {
+				return user;
+			}
+			@Override
+			public Iterable<?> getSubjectPositionalParameters() {
+				return ImmutableList.of(user.getFullName(), date);
+			}
+			@Override
+			public Page createPage() {
+				return new ExampleInlineCssHtmlNotificationPage();
 			}
 		};
 	}
@@ -78,10 +97,9 @@ public class BasicApplicationNotificationContentDescriptorFactoryImpl
 				return GenericEntityModel.of(user);
 			}
 			@Override
-			public Component createComponent(String wicketId) {
+			public Page createPage() {
 				IModel<User> userModel = GenericEntityModel.of(user);
-				return new UserPasswordRecoveryRequestHtmlNotificationPanel<>(
-					wicketId,
+				return new UserPasswordRecoveryRequestHtmlNotificationPage<>(
 					keyGenerator,
 					userModel, userModel, Model.of(new Date()),
 					mapper.map(userModel, BindingModel.of(userModel, Bindings.user().passwordRecoveryRequest().token()))

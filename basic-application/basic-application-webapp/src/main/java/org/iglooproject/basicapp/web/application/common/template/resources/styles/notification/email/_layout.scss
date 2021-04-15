@@ -1,0 +1,71 @@
+.container-header-section {
+
+}
+
+.container-header-section-main {
+	& > tbody > tr > td {
+		padding-top: $font-size-base;
+		padding-bottom: $font-size-base;
+		@include bg($primary);
+
+		> table > tbody > tr > td {
+			color: color-contrast($primary);
+		}
+
+		.container-header-section-main-title {
+			font-size: rem(2);
+		}
+	}
+}
+
+.container-header-section-environment {
+	& > tbody > tr > td {
+		padding-top: $font-size-base / 2;
+		padding-bottom: $font-size-base / 2;
+
+		> table > tbody > tr > td {
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.container-header-section-environment-development {
+	& > tbody > tr > td {
+		@include bg($success);
+
+		> table > tbody > tr > td {
+			color: color-contrast($success);
+		}
+	}
+}
+
+.container-header-section-environment-testing {
+	& > tbody > tr > td {
+		@include bg($info);
+
+		> table > tbody > tr > td {
+			color: color-contrast($info);
+		}
+	}
+}
+
+.container-header-section-environment-staging {
+	& > tbody > tr > td {
+		@include bg($warning);
+
+		> table > tbody > tr > td {
+			color: color-contrast($warning);
+		}
+	}
+}
+
+.container-header-section-environment-production {
+	& > tbody > tr > td {
+		@include bg($danger);
+
+		> table > tbody > tr > td {
+			color: color-contrast($danger);
+		}
+	}
+}

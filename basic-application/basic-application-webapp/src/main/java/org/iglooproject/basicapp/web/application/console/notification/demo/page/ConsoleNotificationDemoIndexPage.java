@@ -66,6 +66,20 @@ public class ConsoleNotificationDemoIndexPage extends ConsoleNotificationDemoTem
 			}
 		});
 		
+		add(new Link<Void>("sendExampleInlineCss") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onClick() {
+				try {
+					notificationService.sendExampleInlineCssNotification(BasicApplicationSession.get().getUser());
+					Session.get().success(getString("console.notifications.example.send.success"));
+				} catch (ServiceException e) {
+					LOGGER.error("Error while sending example notification", e);
+					Session.get().error(getString("common.error.unexpected"));
+				}
+			}
+		});
+		
 		add(
 			new SpecificModelCollectionView<INotificationContentDescriptor, NotificationDemoEntry>(
 					"notifications", SequenceProviders.fromItemModels(createDemoEntries())) {

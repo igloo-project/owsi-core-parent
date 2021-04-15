@@ -7,6 +7,8 @@ public interface INotificationService {
 
 	void sendExampleNotification(User user) throws ServiceException;
 
+	void sendExampleInlineCssNotification(User user) throws ServiceException;
+
 	/**
 	 * Sends a mail to user from a specified contact
 	 * @param userTo : recipient user

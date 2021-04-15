@@ -1,0 +1,16 @@
+@each $name, $color in map-merge(
+	$theme-colors,
+	(
+		"body": $body-bg,
+		"white": $white,
+		"transparent": transparent
+	)
+) {
+	.bg-#{$name} {
+		&,
+		& > tbody > tr > td {
+			background-color: $color if($enable-important-utilities, !important, null);
+			color: color-contrast($color) if($enable-important-utilities, !important, null);
+		}
+	}
+}

@@ -38,7 +38,20 @@ public class NotificationServiceImpl extends AbstractNotificationServiceImpl imp
 			throw new ServiceException(ERROR_EXCEPTION_MESSAGE, e);
 		}
 	}
-	
+
+	@Override
+	public void sendExampleInlineCssNotification(User user) throws ServiceException {
+		Date date = new Date();
+		
+		try {
+			builder().to(user)
+				.content(contentDescriptorFactory.exampleInlineCss(user, date))
+				.send();
+		} catch (RuntimeException | ServiceException e) {
+			throw new ServiceException(ERROR_EXCEPTION_MESSAGE, e);
+		}
+	}
+
 	@Override
 	public void sendUserPasswordRecoveryRequest(User user) throws ServiceException {
 		try {
